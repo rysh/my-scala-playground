@@ -26,9 +26,12 @@ class MyS3(region: Regions) {
 
   def createBucket(name : String): Either[Exception, Bucket] = {
     try {
-      Right(s3.createBucket(name))
+      getBucket(name) match {
+        case Some(bucket) => Right(bucket)
+        case None => Right(s3.createBucket(name))
+      }
     } catch {
-      case e: Exception =>Left(e)
+      case e: Exception => Left(e)
     }
   }
 
