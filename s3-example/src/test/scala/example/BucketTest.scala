@@ -21,23 +21,24 @@ class BucketTest extends FlatSpec with Matchers {
   }
 
 
-  "MyS3Object" should "Upload an Object" in {
+  ignore should "Upload an Object" in {
     ???
   }
 
-  "MyS3Object" should "List Objects" in {
+  ignore should "List Objects" in {
     ???
   }
 
-  "MyS3Object" should "List Objects" in {
+  ignore should "Download an Object" in {
     ???
   }
 
-  "MyS3Object" should "Download an Object" in {
+  ignore should "Copy, Move, or Rename Objects" in {
     ???
   }
 
-  "MyS3Object" should "Download an Object" in {
+
+  ignore should "Delete an Object" in {
     ???
   }
   //Upload an Object

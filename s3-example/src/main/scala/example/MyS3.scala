@@ -12,7 +12,7 @@ import scala.collection.JavaConverters
   * Created by ryuhei.ishibashi on 2017/07/11.
   */
 class MyS3(region: Regions) {
-  private val s3: AmazonS3 = AmazonS3ClientBuilder.standard().withRegion(region).build()
+  val s3: AmazonS3 = AmazonS3ClientBuilder.standard().withRegion(region).build()
 
   def listBuckets(): Iterable[Bucket] = {
     JavaConverters.collectionAsScalaIterable(s3.listBuckets())

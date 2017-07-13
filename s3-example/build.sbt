@@ -1,8 +1,9 @@
 import Dependencies._
 
 libraryDependencies += "com.amazonaws" % "aws-java-sdk" % "1.11.158"
+libraryDependencies += "com.github.pathikrit" % "better-files_2.12" % "3.0.0"
 
-lazy val root = (project in file(".")).
+lazy val s3 = (project in file(".")).
   settings(
     inThisBuild(List(
       organization := "com.example",
