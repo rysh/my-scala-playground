@@ -2,7 +2,7 @@ import Dependencies._
 
 libraryDependencies += "com.github.pathikrit" % "better-files_2.12" % "3.0.0"
 
-lazy val root = (project in file(".")).
+lazy val betterFiles = (project in file(".")).
   settings(
     inThisBuild(List(
       organization := "com.example",
