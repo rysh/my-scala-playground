@@ -32,15 +32,22 @@ jobs:
           - v1-dependencies-
 
       - run: |
-          cd better-files-example
-          cat /dev/null | sbt test:compile
+          cd sbt-docker-example
+          cat /dev/null | sbt test
 
-      - save_cache:
-          paths:
-            - ~/.m2
-          key: v1-dependencies--{{ checksum "build.sbt" }}
-        
-      # run tests!
+      - run: |
+          cd circe-example
+          cat /dev/null | sbt test
+
       - run: |
           cd better-files-example
-          cat /dev/null | sbt test:test
+          cat /dev/null | sbt test
+
+      - run: |
+          cd s3-example
+          cat /dev/null | sbt test
+
+      - run: |
+          cd treat-control-characters
+          cat /dev/null | sbt test
+
