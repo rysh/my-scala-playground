@@ -2,6 +2,7 @@ package example
 
 import java.util
 
+import better.files.File
 import com.amazonaws.auth.profile.ProfileCredentialsProvider
 import com.amazonaws.regions.Regions
 import com.amazonaws.services.s3.{AmazonS3, AmazonS3Client, AmazonS3ClientBuilder}
@@ -13,24 +14,18 @@ import scala.collection.JavaConverters
   * Created by ryuhei.ishibashi on 2017/07/11.
   */
 class MyS3(region: Regions) {
+
+  val s3: AmazonS3 = AmazonS3ClientBuilder.standard().withRegion(region).build()
+
+  def upload(bucketName: String, keyName: String, file: File): Any = {
+    new MyS3Object(this).upload(bucketName, keyName, file)
+  }
+
   def putObject(req: PutObjectRequest) = {
     s3.putObject(req)
   }
 
-  val s3: AmazonS3 = withCredentials
 
-  private def defaultClient = {
-    AmazonS3ClientBuilder.defaultClient()
-  }
-  private def standardWithRegion = {
-    AmazonS3ClientBuilder.standard().withRegion(region).withPathStyleAccessEnabled(true).build()
-  }
-
-  private def withCredentials = {
-    val credentialsProvider = new ProfileCredentialsProvider
-    val builder = AmazonS3ClientBuilder.standard()
-    builder.withRegion(region).build()
-  }
 
   def listBuckets(): Iterable[Bucket] = {
     JavaConverters.collectionAsScalaIterable(s3.listBuckets())
@@ -70,4 +65,29 @@ object MyS3 {
   def create(): MyS3 = {
     new MyS3(region)
   }
+}
+
+class MyS3Bucket(s3:MyS3, name: String) {
+  val bucket: Either[Exception, Bucket] = s3.createBucket(name)
+}
+
+class MyS3Object(s3: MyS3) {
+
+  def upload(bucketName:String, keyName: String, file: File) = {
+    import com.amazonaws.AmazonServiceException
+
+    try {
+      val req = new PutObjectRequest(bucketName, keyName, file.toJava)
+      s3.putObject(req)
+    } catch {
+      case e: AmazonServiceException =>
+        System.err.println(e.getErrorMessage)
+        System.exit(1)
+    }
+
+  }
+  def list() = ???
+  def download() = ???
+  def delete() = ???
+
 }

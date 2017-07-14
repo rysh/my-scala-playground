@@ -6,7 +6,7 @@ class BucketTest extends FlatSpec with Matchers {
 	
     //http://docs.aws.amazon.com/sdk-for-java/v1/developer-guide/examples-s3-buckets.html
 
-  ignore should "create, list, get and delete Bucket" in {
+  it should "create, list, get and delete Bucket" in {
     val s3 = MyS3.create()
 
 
