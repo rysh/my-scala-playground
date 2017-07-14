@@ -1,23 +1,31 @@
 package example
 
-import org.scalatest.{BeforeAndAfterEach, FunSuite}
+import better.files.File
+import org.scalatest.{BeforeAndAfterAll, FunSuite}
 
 /**
   * Created by ryuhei.ishibashi on 2017/07/12.
   */
-class MyS3ObjectTest extends FunSuite with BeforeAndAfterEach {
+class MyS3ObjectTest extends FunSuite with BeforeAndAfterAll {
 
-  override def beforeEach() {
+  val s3 = MyS3.create()
+  val bucketName = s"rysh-${localName()}-my-s3-object-test"
+  val file = File("my-s3-object-test").createIfNotExists()
+  override def beforeAll() {
+    val bucket = s3.createBucket(bucketName)
 
   }
 
-  override def afterEach() {
+  override def afterAll() {
+    file.delete()
+    val bucket = s3.getBucket(bucketName).get
 
+    s3.deleteBucket(bucketName)
   }
 
-  ignore("Upload an Object") {
+  test("Upload an Object") {
 
-    MyS3Object.create().upload()
+    MyS3Object.create().upload(bucketName, "my-s3-object-test", file)
   }
 
   ignore("List Objects") {
