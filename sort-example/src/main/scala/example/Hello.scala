@@ -7,8 +7,8 @@ object Hello extends App {
   def sortWithNullFirst(arr: Seq[User]):Seq[User] = {
     arr.sortWith((a, b) => {
       (a.id, b.id) match {
-        case (Some(a),Some(b)) => a > b
-        case (Some(a) , None) => false // Noneを前に変更
+        case (Some(a), Some(b)) => a > b
+        case (Some(_), None) => false // Noneを前に変更
         case _ => true  // 順序は変わらない
       }
     })
