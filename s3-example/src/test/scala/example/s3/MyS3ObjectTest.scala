@@ -1,6 +1,7 @@
-package example
+package example.s3
 
 import better.files.File
+import example.localName
 import org.scalatest.{BeforeAndAfterAll, FunSuite}
 
 /**

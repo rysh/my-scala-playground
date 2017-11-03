@@ -1,12 +1,9 @@
-package example
-
-import java.util
+package example.s3
 
 import better.files.File
-import com.amazonaws.auth.profile.ProfileCredentialsProvider
 import com.amazonaws.regions.Regions
-import com.amazonaws.services.s3.{AmazonS3, AmazonS3Client, AmazonS3ClientBuilder}
-import com.amazonaws.services.s3.model.{AmazonS3Exception, Bucket, ObjectListing, PutObjectRequest}
+import com.amazonaws.services.s3.{AmazonS3, AmazonS3ClientBuilder}
+import com.amazonaws.services.s3.model.{PutObjectRequest, Bucket}
 
 import scala.collection.JavaConverters
 

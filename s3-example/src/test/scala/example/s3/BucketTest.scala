@@ -1,5 +1,6 @@
-package example
+package example.s3
 
+import example.localName
 import org.scalatest._
 
 class BucketTest extends FlatSpec with Matchers {
