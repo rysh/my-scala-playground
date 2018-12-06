@@ -1,1 +1,1 @@
-# my-scala-playground
+# my-scala-playground [![CircleCI](https://circleci.com/gh/rysh/my-scala-playground.svg?style=svg)](https://circleci.com/gh/rysh/my-scala-playground)
