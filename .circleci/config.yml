@@ -48,10 +48,6 @@ jobs:
           cat /dev/null | sbt test
 
       - run: |
-          cd s3-example
-          cat /dev/null | sbt test
-
-      - run: |
           cd treat-control-characters
           cat /dev/null | sbt test
 
