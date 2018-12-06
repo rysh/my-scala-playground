@@ -4,7 +4,7 @@ lazy val root = (project in file("."))
 	.enablePlugins(JavaAppPackaging, AshScriptPlugin, sbtdocker.DockerPlugin)
 	.settings(
     organization := "rysh",
-    scalaVersion := "2.12.1",
+    scalaVersion := "2.12.8",
     name := "hello",
     mainClass in (Compile, run) := Some("Hello"),
     version      := "0.1.1-SNAPSHOT",
