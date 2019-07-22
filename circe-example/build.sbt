@@ -1,5 +1,5 @@
 import Dependencies._
-val circeVersion = "0.8.0"
+val circeVersion = "0.11.0"
 
 libraryDependencies ++= Seq(
   "io.circe" %% "circe-core",
@@ -19,4 +19,4 @@ lazy val root = (project in file(".")).
     libraryDependencies += scalaTest % Test
   )
 
-addCompilerPlugin("org.scalamacros" % "paradise" % "2.1.0" cross CrossVersion.full)
+addCompilerPlugin("org.scalamacros" % "paradise" % "2.1.1" cross CrossVersion.full)

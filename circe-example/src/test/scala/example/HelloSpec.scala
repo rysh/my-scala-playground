@@ -132,7 +132,7 @@ class HelloSpec extends FunSpec with Matchers {
       import io.circe.{ Decoder, Encoder }
 
 
-      implicit val config: Configuration = Configuration.default.withSnakeCaseKeys
+      implicit val config: Configuration = Configuration.default.withSnakeCaseMemberNames
 
       @ConfiguredJsonCodec case class User(firstName: String, lastName: String)
 
